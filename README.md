@@ -2,44 +2,46 @@
 ## Oppgave 1: Lagre data i PostgreSQL
 
 
-Du må installere PostgreSQL før du starter med oppgaven. Det kan du gjøre herfra: https://www.postgresql.org/. PostgreSQL er en open source database med bedre ytelse og stabilitet enn MySQL og en av de mest populære databasene i seriøse prosjekter.
+Du mÃ¥ installere PostgreSQL fÃ¸r du starter med oppgaven. Det kan du gjÃ¸re herfra: https://www.postgresql.org/. PostgreSQL er en open source database med bedre ytelse og stabilitet enn MySQL og en av de mest populÃ¦re databasene i seriÃ¸se prosjekter.
 
-Du trenger også en databaseklient. Jeg anbefaler DBeaver som du kan installere herfra: https://dbeaver.io/ DBeaver er open source og støtter en stor rekke databaser. Den har også mulighet til å generere visuelle databaseskjemaer, utforske databaser og mye mer.
+Du trenger ogsÃ¥ en databaseklient. Jeg anbefaler DBeaver som du kan installere herfra: https://dbeaver.io/ DBeaver er open source og stÃ¸tter en stor rekke databaser. Den har ogsÃ¥ mulighet til Ã¥ generere visuelle databaseskjemaer, utforske databaser og mye mer.
 
-I prosjektet finnes det en fil `no.kristiania.pgr200.database.ConferenceDatabaseProgram`. **Første oppgave er å få denne til å kjøre og lagre data i PostgreSQL databasen**.
+I prosjektet finnes det en fil `no.kristiania.pgr200.database.ConferenceDatabaseProgram`. **FÃ¸rste oppgave er Ã¥ fÃ¥ denne til Ã¥ kjÃ¸re og lagre data i PostgreSQL databasen**.
 
-For at dette skal fungere må du:
+For at dette skal fungere mÃ¥ du:
 
 1. Installere PostgreSQL og DBeaver
 2. Koble deg til PostgreSQL med DBeaver
 3. Opprette en databasebruker
 4. Opprette en logisk database i databaseserveren
-5. Kjøre `ConferenceDatabaseProgram`
+5. KjÃ¸re `ConferenceDatabaseProgram`
 6. Sjekke at det har kommet data i PostgreSQL ved hjelp av DBeaver
 
 Her er flere detaljer:
 
-* For å koble DBeaver til PostgreSQL, velg File > New > DBeaver > Database Connection
-  Du skal benytte brukernavnet `postgres` og passorder du satte når du installerte PostgreSQL
-* For å opprette en databasebruker skal du bruke kommandoen [CREATE USER](https://www.postgresql.org/docs/current/static/sql-createuser.html).
+* For Ã¥ koble DBeaver til PostgreSQL, velg File > New > DBeaver > Database Connection
+  Du skal benytte brukernavnet `postgres` og passorder du satte nÃ¥r du installerte PostgreSQL
+* For Ã¥ opprette en databasebruker skal du bruke kommandoen [CREATE USER](https://www.postgresql.org/docs/current/static/sql-createuser.html).
   Benytt brukernavn og passord som du finner i `ConferenceDatabaseProgram.createDataSource`
-* For å opprette en logisk database skal du bruke kommandoen [CREATE DATABASE](https://www.postgresql.org/docs/current/static/sql-createdatabase.html).
-  Bruk navnet `conferencedb_test` på databasen
-* Når du starter `ConferenceDatabaseCommand` må du angi er argument "insert"
-* Du kan så utforske tabellene i DBeaver (men du må først høyreklikke på Database Navigator objektene og velge Refresh)
-* Du kan også utføre kommandoen `SELECT * FROM CONFERENCE_TALK` i et SQL Editor vindu i DBeaver
+* For Ã¥ opprette en logisk database skal du bruke kommandoen [CREATE DATABASE](https://www.postgresql.org/docs/current/static/sql-createdatabase.html).
+  Bruk navnet `conferencedb_test` pÃ¥ databasen
+* NÃ¥r du starter `ConferenceDatabaseCommand` mÃ¥ du angi er argument "insert"
+* Du kan sÃ¥ utforske tabellene i DBeaver (men du mÃ¥ fÃ¸rst hÃ¸yreklikke pÃ¥ Database Navigator objektene og velge Refresh)
+* Du kan ogsÃ¥ utfÃ¸re kommandoen `SELECT * FROM CONFERENCE_TALK` i et SQL Editor vindu i DBeaver
 
 
 ## Oppgave 2: Laste ut data fra databasen
 
-Kommandoen `select * from CONFERENCE_TALK` lister opp alle radene i `CONFERENCE_TALK` tabellen. Implementer en kommando i `ConferenceDatabaseProgram` som utfører denne kommandoen og skrive ut radene.
+Kommandoen `select * from CONFERENCE_TALK` lister opp alle radene i `CONFERENCE_TALK` tabellen. Implementer en kommando i `ConferenceDatabaseProgram` som utfÃ¸rer denne kommandoen og skrive ut radene.
 
-Tips: Du bør bruke `Connection#prepareStatement` og `PreparedStatement#executeQuery` for å få tak i et `ResultSet` objekt. Benytt `ResultSet#next` og `ResultSet#getString` for å hente ut data fra `ResultSet`.
+Tips: Du bÃ¸r bruke `Connection#prepareStatement` og `PreparedStatement#executeQuery` for Ã¥ fÃ¥ tak i et `ResultSet` objekt. Benytt `ResultSet#next` og `ResultSet#getString` for Ã¥ hente ut data fra `ResultSet`.
 
 
 ## Oppgave 3: Oppdater `ConferenceTalksDaoTest`
 
-`ConferenceTalksDaoTest` kan også sjekke at data som har blitt lagt inn kan hentes ut igjen. Endre testen `shouldInsertConferenceTalks` til å ta med dette.
+`ConferenceTalksDaoTest` kan ogsÃ¥ sjekke at data som har blitt lagt inn kan hentes ut igjen. Endre testen `shouldInsertConferenceTalks` til Ã¥ ta med dette. For denne oppgaven trenger du Ã¥ opprette en ny klasse som representerer en Conference Talk.
+
+## Oppgave 4: InnfÃ¸r et autogenerert `id` felt for `CONFERENCE_TALK`
 
 
 
