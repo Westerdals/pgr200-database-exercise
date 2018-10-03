@@ -34,12 +34,12 @@ Her er flere detaljer:
 
 Kommandoen `select * from CONFERENCE_TALK` lister opp alle radene i `CONFERENCE_TALK` tabellen. Implementer en kommando i `ConferenceDatabaseProgram` som utfører denne kommandoen og skrive ut radene.
 
-Tips: Du bør bruke `Connection#prepareStatement` og `PreparedStatement#executeQuery` for å få tak i et `ResultSet` objekt. Benytt `ResultSet#next` og `ResultSet#getString` for å hente ut data fra `ResultSet`.
+Tips: Du bør bruke `Connection#prepareStatement` og `PreparedStatement#executeQuery` for å få tak i et `ResultSet` objekt. Benytt `ResultSet#next` og `ResultSet#getString` for å hente ut data fra `ResultSet`.  For denne oppgaven trenger du å opprette en ny klasse som representerer en Conference Talk.
 
 
 ## Oppgave 3: Oppdater `ConferenceTalksDaoTest`
 
-`ConferenceTalksDaoTest` kan også sjekke at data som har blitt lagt inn kan hentes ut igjen. Endre testen `shouldInsertConferenceTalks` til å ta med dette. For denne oppgaven trenger du å opprette en ny klasse som representerer en Conference Talk.
+`ConferenceTalksDaoTest` kan også sjekke at data som har blitt lagt inn kan hentes ut igjen. Endre testen `shouldInsertConferenceTalks` til å ta med dette.
 
 ## Oppgave 4: Innfør et autogenerert `id` felt for `CONFERENCE_TALK`
 
