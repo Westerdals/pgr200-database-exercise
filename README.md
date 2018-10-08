@@ -1,4 +1,6 @@
 
+# Forelesning 7
+
 ## Oppgave 1: Lagre data i PostgreSQL
 
 
@@ -43,6 +45,27 @@ Tips: Du bør bruke `Connection#prepareStatement` og `PreparedStatement#executeQ
 
 ## Oppgave 4: Innfør et autogenerert `id` felt for `CONFERENCE_TALK`
 
+# Forelesning 8
 
+## Oppgave 5: Bruk Flyway til å lagre basebaseskjema
 
+Legg til dependency på `org.flywaydb:flywaydb` i `pom.xml` for å ta i bruk Flyway. Flytt `CREATE TABLE` statements fra Java kode til migration scripts. Se [Flyway dokumentasjon](https://flywaydb.org/getstarted/firststeps/api).
+
+## Oppgave 6: Innfør flere tabeller
+
+`CONFERENCE_TALKS` kan være koblet til en eller flere `TOPICS`. Legg til kommandoer for å opprette en topic, koble en topic til en talk og liste alle talks som har en gitt topic. Bruk en join tabell mellom `CONFERENCE_TALKS` og `TOPICS`. Bruk DAO-patternet for å implementere TopicsDao.
+
+## Oppgave 7: Splitt prosjektet i to Maven-moduler
+
+DAO-er og testkode for disse skal flyttes til en ny undermodul som heter `database-core`, main-klasser skal flyttes til en ny undermodul som heter `database-main`. Denne katalogen skal gjøres om til et Maven [multi-module prosjekt](https://books.sonatype.com/mvnex-book/reference/multimodule.html).
+
+For å bygge begge modulene står du i hovedpakka og skriver `mvn install`.
+
+## Oppgave 8: Gjør `database-main` eksekverbar
+
+Etter at du har kjørt `mvn install` ønsker vi at `database-main.jar`-fila skal kunne kjøres med `java -jar database-main.jar`. For å få dette til må du benytte [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html).
+
+## Oppgave 9: Beskriv designretningslinjer tekstlig
+
+Når du oppretter migrations og skriver `CREATE TABLE` statements (oppgave 5) og når du lager DAO-er og DataObjekter er det lurt å gjøre det på samme måte for alle tabeller og klasser innenfor et prosjekt. Beskriv i README-fila hvilke retningslinjer for navn, DAO-metoder, primærnøkler og fremmednøkler du har fulgt.
 
