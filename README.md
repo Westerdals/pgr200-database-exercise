@@ -69,3 +69,8 @@ Etter at du har kjørt `mvn install` ønsker vi at `database-main.jar`-fila skal
 
 Når du oppretter migrations og skriver `CREATE TABLE` statements (oppgave 5) og når du lager DAO-er og DataObjekter er det lurt å gjøre det på samme måte for alle tabeller og klasser innenfor et prosjekt. Beskriv i README-fila hvilke retningslinjer for navn, DAO-metoder, primærnøkler og fremmednøkler du har fulgt.
 
+## Oppgave 10: Trekk ut en felles superklasse fra ConferenceTalksDao og TopicsDao (valgfri)
+
+AbstractDao kan implementere listObjects(), singleObject(), executeUpdate() ved hjelp av en "template method" eller lambda.
+
+## Oppgave 11: Kjør prosjektet dittt i Travis-CI
