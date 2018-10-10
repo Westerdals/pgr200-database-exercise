@@ -55,13 +55,13 @@ Legg til dependency på `org.flywaydb:flywaydb` i `pom.xml` for å ta i bruk Fly
 
 `CONFERENCE_TALKS` kan være koblet til en eller flere `TOPICS`. Legg til kommandoer for å opprette en topic, koble en topic til en talk og liste alle talks som har en gitt topic. Bruk en join tabell mellom `CONFERENCE_TALKS` og `TOPICS`. Bruk DAO-patternet for å implementere TopicsDao.
 
-## Oppgave 7: Splitt prosjektet i to Maven-moduler
+## Oppgave 7: Splitt prosjektet i to Maven-moduler (neste uke)
 
 DAO-er og testkode for disse skal flyttes til en ny undermodul som heter `database-core`, main-klasser skal flyttes til en ny undermodul som heter `database-main`. Denne katalogen skal gjøres om til et Maven [multi-module prosjekt](https://books.sonatype.com/mvnex-book/reference/multimodule.html).
 
 For å bygge begge modulene står du i hovedpakka og skriver `mvn install`.
 
-## Oppgave 8: Gjør `database-main` eksekverbar
+## Oppgave 8: Gjør `database-main` eksekverbar (neste uke)
 
 Etter at du har kjørt `mvn install` ønsker vi at `database-main.jar`-fila skal kunne kjøres med `java -jar database-main.jar`. For å få dette til må du benytte [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html).
 
@@ -73,4 +73,4 @@ Når du oppretter migrations og skriver `CREATE TABLE` statements (oppgave 5) og
 
 AbstractDao kan implementere listObjects(), singleObject(), executeUpdate() ved hjelp av en "template method" eller lambda.
 
-## Oppgave 11: Kjør prosjektet dittt i Travis-CI
+## Oppgave 11: Kjør prosjektet dittt i Travis-CI (valgfri)
