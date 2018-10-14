@@ -55,16 +55,6 @@ Legg til dependency på `org.flywaydb:flywaydb` i `pom.xml` for å ta i bruk Fly
 
 `CONFERENCE_TALKS` kan være koblet til en eller flere `TOPICS`. Legg til kommandoer for å opprette en topic, koble en topic til en talk og liste alle talks som har en gitt topic. Bruk en join tabell mellom `CONFERENCE_TALKS` og `TOPICS`. Bruk DAO-patternet for å implementere TopicsDao.
 
-## Oppgave 7: Splitt prosjektet i to Maven-moduler (neste uke)
-
-DAO-er og testkode for disse skal flyttes til en ny undermodul som heter `database-core`, main-klasser skal flyttes til en ny undermodul som heter `database-main`. Denne katalogen skal gjøres om til et Maven [multi-module prosjekt](https://books.sonatype.com/mvnex-book/reference/multimodule.html).
-
-For å bygge begge modulene står du i hovedpakka og skriver `mvn install`.
-
-## Oppgave 8: Gjør `database-main` eksekverbar (neste uke)
-
-Etter at du har kjørt `mvn install` ønsker vi at `database-main.jar`-fila skal kunne kjøres med `java -jar database-main.jar`. For å få dette til må du benytte [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html).
-
 ## Oppgave 9: Beskriv designretningslinjer tekstlig
 
 Når du oppretter migrations og skriver `CREATE TABLE` statements (oppgave 5) og når du lager DAO-er og DataObjekter er det lurt å gjøre det på samme måte for alle tabeller og klasser innenfor et prosjekt. Beskriv i README-fila hvilke retningslinjer for navn, DAO-metoder, primærnøkler og fremmednøkler du har fulgt.
@@ -73,4 +63,41 @@ Når du oppretter migrations og skriver `CREATE TABLE` statements (oppgave 5) og
 
 AbstractDao kan implementere listObjects(), singleObject(), executeUpdate() ved hjelp av en "template method" eller lambda.
 
-## Oppgave 11: Kjør prosjektet dittt i Travis-CI (valgfri)
+# Forelesning 9: Maven og debugging
+
+## Oppgave 7: Splitt prosjektet i to Maven-moduler (flyttet fra uke 8)
+
+DAO-er og testkode for disse skal flyttes til en ny undermodul som heter `database-core`, main-klasser skal flyttes til en ny undermodul som heter `database-main`. Denne katalogen skal gjøres om til et Maven [multi-module prosjekt](https://books.sonatype.com/mvnex-book/reference/multimodule.html).
+
+For å bygge begge modulene står du i hovedpakka og skriver `mvn install`.
+
+## Oppgave 8: Gjør `database-main` eksekverbar (flyttet fra uke 8)
+
+Etter at du har kjørt `mvn install` ønsker vi at `database-main.jar`-fila skal kunne kjøres med `java -jar database-main.jar`. For å få dette til må du benytte [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/executable-jar.html).
+
+
+## Oppgave 11: Kjør prosjektet ditt i Travis-CI (flyttet fra uke 8)
+
+## Oppgave 12: Test ut debugger (instruksjoner for Eclipse)
+
+Innfør en feil i koden din fra innleveringen med vilje: I koden som ser ut cirka som følger:
+
+```Java
+        int c;
+        while ((c = inputStream.read()) != -1) {
+            if (c == '\r') {
+                c = inputStream.read();
+                break;
+            }
+            result.append((char)c);
+        }
+```
+
+Innfør en feil med overlegg: Bytt ut '\r' med '\t'. Dette vil gi rar oppføresel som kan være vanskelig å komme til bunns i. La oss bruke debuggeren for å finne ut av det (instruksjoner for Eclipse):
+
+1. Sett cursoren på første linje i `runServerThread` eller tilsvarende metode og trykk `ctrl-shift-b` (`cmd-shift-b`). Du skal nå kunne se et lite symbol i margen som markerer at du har en "breakline" her. (Du kan også klikke i margen og velge "Toggle Breakpoint")
+2. Gå til en test, høyreklikk og velg Debug as > Unit test. Dette vil starte testen i debuggeren
+3. Programmet vil nå pause når det kommer til breakpointet. Trykk F6 (Step over) for å gå til neste linje eller F5 (step into) for å gå inn i et metodekall. Trykk F8 for å fortsette til neste breakpoint. Legg merke til området der det står "Variables" - her kan du se hva som skje inne i programmet.
+
+
+
